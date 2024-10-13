@@ -1,61 +1,41 @@
-<readme>
-  <title>ContactPaserAPI</title>
-  
-  <description>
-    This Python script extracts phone numbers and email addresses from clipboard content using regular expressions. 
-    It merges the results from both lists (phone numbers and emails) alternately and copies them back to the clipboard. 
-    The script supports cases where either list may be empty.
-  </description>
-  
-  <features>
-    <feature>Regex-based pattern detection:</feature>
-    <feature>Extracts phone numbers in the format XXX-XXXX-XXX.</feature>
-    <feature>Extracts email addresses ending with .com.</feature>
-    <feature>Merges lists alternatively: Uses the itertools.zip_longest() function to handle merging of phone numbers and emails, even if the lists are of unequal length.</feature>
-    <feature>Clipboard integration: Uses pyperclip to automatically copy the extracted phone numbers and email addresses back to the clipboard.</feature>
-  </features>
-  
-  <requirements>
-    <requirement>Python 3.x</requirement>
-    <requirement>pyperclip library: Install it using pip: <code>pip install pyperclip</code></requirement>
-  </requirements>
-  
-  <usage>
-    <step>1. Copy some text to your clipboard containing phone numbers and/or email addresses.</step>
-    <step>2. Run the script: <code>python extract.py</code></step>
-    <step>3. If phone numbers or email addresses are found, they will be printed in the terminal and copied to your clipboard for easy access.</step>
-  </usage>
-  
-  <codeExplanation>
-    <section>
-      <header>Phone number and email extraction:</header>
-      <content>The script uses regular expressions to detect phone numbers in the XXX-XXXX-XXX format and emails ending in .com.</content>
-    </section>
-    <section>
-      <header>Merging lists:</header>
-      <content>The zip_longest() function from itertools is used to merge the two lists (phone numbers and emails) alternately. It handles cases where one list may be longer than the other, and if one list is empty, the other list is still processed.</content>
-    </section>
-    <section>
-      <header>Clipboard operations:</header>
-      <content>The script uses the pyperclip library to fetch content from the clipboard, process it, and then copy the results back to the clipboard.</content>
-    </section>
-  </codeExplanation>
-  
-  <example>
-    <clipboardContent>
-      John's number is 123-4567-890. You can email him at john@example.com.
-    </clipboardContent>
-    <extractedResult>
-      123-4567-890
-      john@example.com
-    </extractedResult>
-  </example>
-  
-  <futurePlans>
-    <plan>Convert this script into a REST API using Flask for broader use in web applications.</plan>
-  </futurePlans>
-  
-  <license>
-    This project is licensed under the MIT License - see the LICENSE file for details.
-  </license>
-</readme>
+# Phone Number and Email Extractor
+
+This Python script extracts phone numbers and email addresses from any text copied to the clipboard and copies them back to the clipboard. It uses regular expressions for pattern matching and `pyperclip` for clipboard operations.
+
+## Features
+
+- **Phone Number Extraction**: Extracts phone numbers in the format `XXX-XXXX-XXX`.
+- **Email Extraction**: Extracts email addresses ending with `.com`.
+- **Clipboard Integration**: The script automatically reads text from the clipboard and copies the extracted data back to the clipboard.
+- **Regex-Based Matching**: Uses regular expressions for efficient and accurate extraction.
+
+## Requirements
+
+- Python 3.x
+- The following Python packages:
+  - `pyperclip`
+  - `re`
+
+Install the required packages by running:
+
+```bash
+pip install pyperclip
+
+## Script Explanation
+
+### Regex Patterns
+
+- **Phone Number**: The phone number pattern is `\d\d\d-\d\d\d\d-\d\d\d`, which matches a format like `123-4567-890`.  
+  You can modify the pattern to match different formats, such as including parentheses or country codes.
+
+- **Email Address**: The email pattern used is `\S+.com`, which matches any string of characters followed by `.com`. You can enhance this pattern to support other domains or stricter email validation as needed.
+
+### Code Overview
+
+- **Clipboard Handling**: The script uses `pyperclip.paste()` to get the text copied to the clipboard.
+- **Regex Search**: It uses Python's `re` module to search for phone numbers and emails in the clipboard text.
+- **Data Collection**: The phone numbers and emails are stored in separate lists (`arr1` and `arr2`), and are combined into a single list (`arr3`) using `zip_longest` from the `itertools` module.
+- **Clipboard Output**: If any data is found, it is copied back to the clipboard using `pyperclip.copy()`.
+
+## Future Improvements
+- **Flask API**: I plan to convert this script into a Flask API soon, allowing for more versatile usage and integration into web applications.
