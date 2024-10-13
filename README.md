@@ -1,4 +1,4 @@
-# Phone Number and Email Extractor
+# ContactParserAPI
 
 This Python script extracts phone numbers and email addresses from any text copied to the clipboard and copies them back to the clipboard. It uses regular expressions for pattern matching and `pyperclip` for clipboard operations.
 
@@ -17,10 +17,7 @@ This Python script extracts phone numbers and email addresses from any text copi
   - `re`
 
 Install the required packages by running:
-
-```bash
 pip install pyperclip
-
 ## Script Explanation
 
 ### Regex Patterns
@@ -38,4 +35,4 @@ pip install pyperclip
 - **Clipboard Output**: If any data is found, it is copied back to the clipboard using `pyperclip.copy()`.
 
 ## Future Improvements
-- **Flask API**: I plan to convert this script into a Flask API soon, allowing for more versatile usage and integration into web applications.
+- **Flask API**:  planning to convert this script into a Flask API soon, allowing for more versatile usage and integration into web applications.
